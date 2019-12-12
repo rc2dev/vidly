@@ -25,7 +25,7 @@ class Register extends Component {
 
     const options = { abortEarly: false };
     const { error } = Joi.validate(this.state.account, this.schema, options);
-    if (!error) return {};
+    if (!error) return null;
 
     for (let item of error.details) {
       errors[item.path[0]] = item.message;
@@ -44,7 +44,7 @@ class Register extends Component {
     e.preventDefault();
 
     const errors = this.validate();
-    this.setState({ errors });
+    this.setState({ errors: errors || {} });
     if (errors) return;
 
     // Call the server
@@ -88,7 +88,9 @@ class Register extends Component {
           error={errors.name}
           onChange={this.handleChange}
         />
-        <button className="btn btn-primary">Register</button>
+        <button disabled={this.validate()} className="btn btn-primary">
+          Register
+        </button>
       </form>
     );
   }
