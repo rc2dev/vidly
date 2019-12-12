@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Input from './common/input';
 
 class Register extends Component {
   state = { account: { username: '', password: '', name: '' } };
@@ -21,40 +22,24 @@ class Register extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            autoFocus
-            id="username"
-            name="username"
-            type="text"
-            className="form-control"
-            value={account.username}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="text"
-            className="form-control"
-            value={account.password}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            className="form-control"
-            value={account.name}
-            onChange={this.handleChange}
-          />
-        </div>
+        <Input
+          name="username"
+          label="Username"
+          value={account.username}
+          onChange={this.handleChange}
+        />
+        <Input
+          name="password"
+          label="Password"
+          value={account.password}
+          onChange={this.handleChange}
+        />
+        <Input
+          name="name"
+          label="Name"
+          value={account.name}
+          onChange={this.handleChange}
+        />
         <button className="btn btn-primary">Register</button>
       </form>
     );
