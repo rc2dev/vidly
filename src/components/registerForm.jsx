@@ -10,9 +10,11 @@ class RegisterForm extends Form {
 
   schema = {
     username: Joi.string()
+      .required()
       .email()
       .label('Username'),
     password: Joi.string()
+      .required()
       .min(5)
       .label('Password'),
     name: Joi.string()
@@ -26,7 +28,7 @@ class RegisterForm extends Form {
 
   render() {
     return (
-      <React.Fragment>
+      <div>
         <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput('username', 'Username')}
@@ -34,7 +36,7 @@ class RegisterForm extends Form {
           {this.renderInput('name', 'Name')}
           {this.renderButton('Register')}
         </form>
-      </React.Fragment>
+      </div>
     );
   }
 }
