@@ -48,6 +48,28 @@ class Form extends Component {
     // Call the server
     this.doSubmit();
   };
+
+  renderInput = (name, label) => {
+    const { data, errors } = this.state;
+
+    return (
+      <Input
+        name={name}
+        label={label}
+        value={data[name]}
+        error={errors[name]}
+        onChange={this.handleChange}
+      />
+    );
+  };
+
+  renderButton = label => {
+    return (
+      <button disabled={this.validate()} className="btn btn-primary">
+        {label}
+      </button>
+    );
+  };
 }
 
 export default Form;
