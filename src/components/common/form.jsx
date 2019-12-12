@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser';
+import Input from './input';
 
 class Form extends Component {
   state = {
@@ -49,11 +50,12 @@ class Form extends Component {
     this.doSubmit();
   };
 
-  renderInput = (name, label) => {
+  renderInput = (name, label, type = 'text') => {
     const { data, errors } = this.state;
 
     return (
       <Input
+        type={type}
         name={name}
         label={label}
         value={data[name]}
