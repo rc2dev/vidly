@@ -7,7 +7,7 @@ import Rentals from './components/rentals';
 import NotFound from './components/notFound';
 import NavBar from './components/navbar';
 import './App.css';
-import Register from './components/register';
+import RegisterForm from './components/registerForm';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="/movies" component={Movies} />
           <Route path="/customers" component={Customers} />
           <Route path="/rentals" component={Rentals} />
-          <Route path="/register" component={Register} />
+          <Route path="/register" component={RegisterForm} />
           <Route path="/not-found" component={NotFound} />
           <Redirect exact from="/" to="/movies" />
           <Redirect to="/not-found" />
