@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Joi from 'joi-browser';
 import Input from './common/input';
 
 class Register extends Component {
@@ -7,16 +8,28 @@ class Register extends Component {
     errors: {}
   };
 
+  schema = {
+    username: Joi.string()
+      .email()
+      .label('Username'),
+    password: Joi.string()
+      .min(5)
+      .label('Password'),
+    name: Joi.string()
+      .required()
+      .label('Name')
+  };
+
   validate() {
     const errors = {};
 
-    const { account } = this.state;
-    if (account.username.trim() === '')
-      errors.username = 'Username is required';
-    if (account.password.trim() === '')
-      errors.password = 'Password is required';
-    if (account.name.trim() === '') errors.name = 'Password is required';
+    const options = { abortEarly: false };
+    const { error } = Joi.validate(this.state.account, this.schema, options);
+    if (!error) return {};
 
+    for (let item of error.details) {
+      errors[item.path[0]] = item.message;
+    }
     return errors;
   }
 
