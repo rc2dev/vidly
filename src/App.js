@@ -8,6 +8,7 @@ import Rentals from './components/rentals';
 import RegisterForm from './components/registerForm';
 import LoginForm from './components/loginForm';
 import Logout from './components/logout';
+import ProtectedRoute from './components/common/protectedRoute';
 import NotFound from './components/notFound';
 import NavBar from './components/navbar';
 import auth from './services/authService';
@@ -31,13 +32,7 @@ class App extends Component {
         <NavBar user={user} />
         <main className="container">
           <Switch>
-            <Route
-              path="/movies/:id"
-              render={props => {
-                if (!user) return <Redirect to="/login" />;
-                return <MovieForm {...props} />;
-              }}
-            />
+            <ProtectedRoute path="/movies/:id" component={MovieForm} />
             <Route
               path="/movies"
               render={props => <Movies {...props} user={user} />}
