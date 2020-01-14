@@ -5,6 +5,7 @@ import Movies from './components/movies';
 import MovieForm from './components/movieForm';
 import Customers from './components/customers';
 import Rentals from './components/rentals';
+import Profile from './components/profile';
 import RegisterForm from './components/registerForm';
 import LoginForm from './components/loginForm';
 import Logout from './components/logout';
@@ -39,6 +40,7 @@ class App extends Component {
             />
             <Route path="/customers" component={Customers} />
             <Route path="/rentals" component={Rentals} />
+            <Route path="/profile" component={Profile} />
             <Route path="/login" component={LoginForm} />
             <Route path="/logout" component={Logout} />
             <Route path="/register" component={RegisterForm} />
